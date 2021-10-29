@@ -23,7 +23,7 @@ public class AnimalNeedsScriptable : ScriptableObject
     [Range(0, 100)]
     public float hungerDeclineRate = 1;
     [Range(0, 100)]
-    public float hungerRefilRate = 15f;
+    public float hungerRefilRate = 100;
     [Header("Reproductive Urge")]
     [Range(0, 100)]
     public float reProdcutiveUrge;
@@ -32,9 +32,12 @@ public class AnimalNeedsScriptable : ScriptableObject
     [Range(0, 100)]
     public float urgerRefilRate = 15f;
 
-    public AnimalType animalType;
+    public List<MonoBehaviour> animalType;
 }
 
 public enum AnimalType{
-    
+    anim,
+    assd,
+    asda,
+    wed
 }

@@ -6,19 +6,19 @@ public class FoundFoodNode : Node
 {
     AnimalAI AI;
     NavMovement navMovement;
-    Transform creature;
+    Transform animal;
     AnimalNeedsScriptable animalNeeds;
 
-    public FoundFoodNode(AnimalAI AI, Transform creature, NavMovement navMovement, AnimalNeedsScriptable animalNeeds){
+    public FoundFoodNode(AnimalAI AI, Transform animal, NavMovement navMovement, AnimalNeedsScriptable animalNeeds){
         this.AI = AI;
-        this.creature = creature; 
+        this.animal = animal; 
         this.navMovement = navMovement;
         this.animalNeeds = animalNeeds;
     }
 
     public override NodeState Evaluate()
     {
-        Collider[] colliders = Physics.OverlapSphere(creature.position, animalNeeds.viewRadius);
+        Collider[] colliders = Physics.OverlapSphere(animal.position, animalNeeds.viewRadius);
         foreach(Collider collider in colliders){
             if(collider.CompareTag("Food")){
                 navMovement.SetDestination(collider.transform.position);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   animalName: Wolf
-  viewRadius: 46
+  viewRadius: 60
   speed: 14.13
   stoppingDistance: 2
   thirst: 100
@@ -25,4 +25,5 @@ MonoBehaviour:
   reProdcutiveUrge: 100
   urgeDeclineRate: 6.1
   urgerRefilRate: 15
-  animalType: 0
+  animalType:
+  - {fileID: 0}

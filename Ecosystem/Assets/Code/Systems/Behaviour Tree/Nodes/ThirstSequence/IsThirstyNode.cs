@@ -10,12 +10,14 @@ public class IsThirstyNode : Node {
         this.animalAI = animalAI;
     }
 
+
     public override NodeState Evaluate(){
-        if(healthAttributes.thirst < healthAttributes.hunger || healthAttributes.IsConsuming()){
-            animalAI.IndicatorColor(Color.red);
+        if(healthAttributes.thirst < healthAttributes.hunger && (healthAttributes.CurrentConsumeState() == ConsumeState.Wandering || healthAttributes.CurrentConsumeState() == ConsumeState.Drinking)){
+            animalAI.IndicatorColor(Color.blue);
+            // if((healthAttributes.CurrentConsumeState() != ConsumeState.Wandering) && (healthAttributes.CurrentConsumeState() != ConsumeState.Drinking))
+            //     healthAttributes.SetConsumeState(ConsumeState.Wandering);   
             return NodeState.SUCCESS;
         }
-        // healthAttributes.Full();
         return NodeState.FAILURE;
     }
 }

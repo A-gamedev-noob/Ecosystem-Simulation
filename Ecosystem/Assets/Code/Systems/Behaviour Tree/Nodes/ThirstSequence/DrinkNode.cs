@@ -7,9 +7,9 @@ public class DrinkNode : Node
 {
     HealthAttributes healthAttributes;
     AnimalNeedsScriptable animalNeeds;
-    NavMeshAgent navAgent;
+    NavMovement navAgent;
 
-    public DrinkNode(HealthAttributes healthAttributes, AnimalNeedsScriptable animalNeeds, NavMeshAgent navAgent){
+    public DrinkNode(HealthAttributes healthAttributes, AnimalNeedsScriptable animalNeeds, NavMovement navAgent){
         this.healthAttributes = healthAttributes;
         this.animalNeeds = animalNeeds;
         this.navAgent = navAgent;
@@ -18,12 +18,11 @@ public class DrinkNode : Node
     public override NodeState Evaluate(){
         if(healthAttributes.thirst < animalNeeds.thirst){
             healthAttributes.Drink();
-            navAgent.autoBraking = true;
             return NodeState.RUNNING; 
         }
 
+        navAgent.MovetoPreviousPoint(true);
         healthAttributes.Full();
-        Debug.Log("f");
         return NodeState.FAILURE;
     }
 }
