@@ -27,17 +27,23 @@ public class NavMovement : MonoBehaviour
         if(navAgent.isStopped)
 
         navAgent.isStopped = false;
-        if(usePrevDestination){
-            navAgent.SetDestination(previousDestination);
-        }else{
-            navAgent.SetDestination(destination);
-        }
+        // if(usePrevDestination){
+        //     navAgent.SetDestination(previousDestination);
+        // }else{
+        //     navAgent.SetDestination(destination);
+        // }
 
+            navAgent.SetDestination(destination);
 
     }
 
-    public void MovetoPreviousPoint(bool condition){
-        usePrevDestination = condition;;
+    public void SetMovetoPreviousPoint(bool condition){
+        usePrevDestination = condition;
+        print(condition);
+    }
+
+    public bool MoveToPreviousPoint(){
+        return usePrevDestination;
     }
 
 
@@ -87,10 +93,16 @@ public class NavMovement : MonoBehaviour
 
     }
 
+    public NavMeshAgent GetNavMeshAgent(){
+        return navAgent;
+    }
+
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, animalNeeds.viewRadius);  
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawSphere(destination, 2f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(previousDestination, 2f);
     }
 
 }

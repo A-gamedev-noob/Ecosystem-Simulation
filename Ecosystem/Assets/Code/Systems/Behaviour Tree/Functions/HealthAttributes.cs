@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthAttributes : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class HealthAttributes : MonoBehaviour
     public string colliderTag = "NULL";
     [HideInInspector]public bool isFoundWater = false;
 
+    [Header("Debug")]
+    [SerializeField] Text stateText;
+
+
     void Start(){
         animalNeeds = GetComponent<AnimalAI>().animalNeeds;
         navMovement = GetComponent<NavMovement>();
@@ -26,6 +29,8 @@ public class HealthAttributes : MonoBehaviour
     void Update(){
         timer += Time.deltaTime;
         Metabolism();
+        
+        // stateText.text = currentConsumeState.ToString();
     }
     
 
@@ -74,7 +79,7 @@ public class HealthAttributes : MonoBehaviour
         // navMovement.MovetoPreviousPoint(true);
 
         isFoundWater = false;
-        print("full");
+        // print("full");
         currentConsumeState = ConsumeState.Wandering;
         colliderTag = "NULL";
     }

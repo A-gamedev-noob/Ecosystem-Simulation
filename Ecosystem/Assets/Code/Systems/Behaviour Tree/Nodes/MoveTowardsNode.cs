@@ -65,7 +65,7 @@ public class MoveTowardsNode : Node
 
     NodeState Wander(){
         Vector3 destination = navMovement.GetDestination();
-        if (Vector3.Distance(navMovement.transform.position, destination) <= animalNeeds.stoppingDistance){
+        if (Vector3.Distance(new Vector3(navMovement.transform.position.x, 0, navMovement.transform.position.z), destination) <= animalNeeds.stoppingDistance){
             navMeshAgent.isStopped = true;
             return NodeState.FAILURE;
         }

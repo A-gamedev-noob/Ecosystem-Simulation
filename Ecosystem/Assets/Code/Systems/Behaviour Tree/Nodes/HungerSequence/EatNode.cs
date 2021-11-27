@@ -15,7 +15,7 @@ public class EatNode : Node
     public override NodeState Evaluate(){
         if(healthAttributes.hunger < animalNeeds.hunger){
             healthAttributes.Eat();
-            Debug.Log("Eating");
+            // Debug.Log("Eating");
             return NodeState.RUNNING; 
         }
         return NodeState.FAILURE;

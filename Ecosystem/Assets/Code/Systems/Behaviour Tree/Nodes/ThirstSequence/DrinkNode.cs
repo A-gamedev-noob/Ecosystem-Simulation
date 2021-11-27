@@ -21,7 +21,8 @@ public class DrinkNode : Node
             return NodeState.RUNNING; 
         }
 
-        navAgent.MovetoPreviousPoint(true);
+        Debug.Log("full");
+        navAgent.SetMovetoPreviousPoint(true);
         healthAttributes.Full();
         return NodeState.FAILURE;
     }

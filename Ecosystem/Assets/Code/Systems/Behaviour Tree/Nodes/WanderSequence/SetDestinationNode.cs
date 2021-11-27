@@ -25,13 +25,14 @@ public class SetDestinationNode : Node{
 
     void SetDirection(){
         timesRun++;
-        if(!navMovement.OnPath()){
+        if(!navMovement.OnPath() || navMovement.GetNavMeshAgent().isStopped){
             Vector3 destination;
             if(directionToMove == Vector3.zero ){
                 destination = FindPointOnArc(0f);
-            }else{
+            }
+            else{
                 int chance = Random.Range(1,100);
-                if(chance < 5){
+                if(chance < 5 || navMovement.MoveToPreviousPoint()){
                     directionToMove *= -1f;
                 }
 
@@ -46,7 +47,7 @@ public class SetDestinationNode : Node{
             navMovement.SetDestination(destination);
 
             if (timesRun > 1){
-                navMovement.MovetoPreviousPoint(false);
+                navMovement.SetMovetoPreviousPoint(false);
                 timesRun = 0;
             }
 
